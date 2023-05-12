@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react";
-import { reqResApi } from "../api/reqRes";
-import { ReqResListado, User } from "../interfaces/reqRes";
+import { User } from "../interfaces/reqRes";
+import { useUsers } from "../hooks/useUsers";
 
 export const Users = () => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    //llamado a la API - con fetch o con axios
-    reqResApi
-      .get<ReqResListado>("/users")
-      .then((resp) => {
-        setUsers(resp.data.data);
-      })
-      .catch(console.log);
-  }, []);
+  const { users, nextPage, prevPage } = useUsers();
 
   const renderItem = ({ id, first_name, last_name, email, avatar }: User) => {
     return (
@@ -49,6 +38,13 @@ export const Users = () => {
         </thead>
         <tbody>{users.map(renderItem)}</tbody>
       </table>
+      <button className="btn btn-primary" onClick={prevPage}>
+        Prev
+      </button>
+      &nbsp;
+      <button className="btn btn-primary" onClick={nextPage}>
+        Next
+      </button>
     </>
   );
 };
