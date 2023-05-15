@@ -3,6 +3,7 @@
 //import { Funciones } from "./typscript/Funciones";
 //import { Contador } from "./components/Contador";
 //import { ContadorConHook } from "./components/ContadorConHook";
+import { Forms } from "./components/Forms";
 import { Login } from "./components/Login";
 import { Users } from "./components/Users"
 
@@ -18,8 +19,9 @@ import { Users } from "./components/Users"
       <Funciones/>
       <Contador/>
       <ContadorConHook/>
-      <Login/>*/}
-      <Users/>
+      <Login/>
+      <Users/>*/}
+      <Forms/>
     
 
     </div>
